@@ -6,7 +6,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
 
 setuptools.setup(
     name='geopack-vectorize',
-    version='2.0.0',
+    version='2.0.1',
     author='geopack-vectorize contributors',
     author_email='',
     description='Vectorized Python implementation of geopack and Tsyganenko models (fork of tsssss/geopack)',
@@ -17,7 +17,7 @@ setuptools.setup(
     platforms= ['any'],
     license= 'MIT',
     keywords= ['geopack','space physics','Tsyganenko model'],
-    packages= setuptools.find_packages(),
+    packages= setuptools.find_packages(include=['geopack', 'geopack.*']),
     package_data={'':['*.txt','*.md']},
     classifiers= [
         'Programming Language :: Python :: 3',

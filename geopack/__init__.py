@@ -6,7 +6,7 @@ This module re-exports all public functions defined in geopack/geopack.py,
 so that they can be imported directly from `geopack`.
 """
 
-__version__ = '2.0.0'
+__version__ = '2.0.1'
 
 from .geopack import (
     update_igrf,
@@ -39,8 +39,12 @@ from .geopack import (
     t96_mgnp,
 )
 
-# Re-export external field model functions (imported/used by geopack.py)
-from .models import t89, t96, t01, t04
+# Load the upstream module paths as well as their top-level callable exports.
+# This also supports consumers such as pySPEDAS: from geopack.t89 import t89.
+from .t89 import t89
+from .t96 import t96
+from .t01 import t01
+from .t04 import t04
 
 # -----------------------------
 # vectorized (re-export)

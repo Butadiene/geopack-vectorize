@@ -46,6 +46,18 @@ Other notable changes from v1.1.4 to v2.0.0:
 pip install geopack-vectorize
 ```
 
+IGRF coefficient files are included in the package. Importing `geopack` and
+running the field models work offline. To explicitly download newer coefficient
+files, call `geopack.update_igrf()` followed by `geopack.init_igrf()`; downloading
+requires internet access.
+
+The upstream scalar import paths, such as `from geopack.t89 import t89`, are
+also supported. Both `geopack` and `geopack-vectorize` install files into the
+same `geopack` Python package. In environments that require both distributions
+(for example through pySPEDAS), install `geopack-vectorize` last; subsequently
+reinstalling or removing either distribution can overwrite or remove shared
+files. Use a separate virtual environment when testing or changing installations.
+
 ### Install from Source
 ```bash
 git clone https://github.com/Butadiene/geopack-vectorize.git

@@ -10,21 +10,31 @@ from .models import t89, t96, t01, t04
 
 igrf_pattern = 'igrf*coeffs.txt'
 
-def update_igrf(local_dir):
+def update_igrf(local_dir=None, timeout=30):
     """
-    Update to the latest IGRF coefficients.
+    Download IGRF coefficient files missing from the local directory.
+
+    This optional network operation is never called on import. Call
+    ``init_igrf()`` afterwards to load newly downloaded coefficients.
+
+    :param local_dir: Destination directory (defaults to bundled coefficients).
+    :param timeout: Network timeout in seconds per request.
     """
 
+    if local_dir is None:
+        local_dir = os.path.join(os.path.dirname(__file__), 'igrf_coeffs')
+    os.makedirs(local_dir, exist_ok=True)
+
     # Where to find the files.
-    url = 'http://www.ngdc.noaa.gov/IAGA/vmod/coeffs/'
+    url = 'https://www.ngdc.noaa.gov/IAGA/vmod/coeffs/'
 
     # Find the coeff files.
     coef_files = []
     try:
         request = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urlopen(request) as response:
+        with urlopen(request, timeout=timeout) as response:
             if response.status != 200:
-                print('Failed to get the list of IGRF coefficients. Status code: {response.status}')
+                print(f'Failed to get the list of IGRF coefficients. Status code: {response.status}')
             else:
                 html = response.read().decode('utf-8')
                 for line in html.splitlines():
@@ -34,7 +44,7 @@ def update_igrf(local_dir):
                         base_name = line[start:end]
                         if fnmatch(base_name, igrf_pattern):
                             coef_files.append(base_name)
-    except:
+    except OSError:
         print('Failed to get the list of IGRF coefficients.')
     
     # Download the files.
@@ -43,7 +53,7 @@ def update_igrf(local_dir):
         if os.path.exists(local_file): continue
 
         remote_file = urljoin(url, coef_file)
-        with urlopen(remote_file) as response:
+        with urlopen(remote_file, timeout=timeout) as response:
             if response.status != 200: continue
             with open(local_file, 'wb') as file:
                 file.write(response.read())
@@ -54,20 +64,18 @@ def update_igrf(local_dir):
 
 def init_igrf(version=None):
     """
-    Initialize the IGRF coefficients and related coefs.
-    Should be called once and only once when importing the geopack module.
+    Load local IGRF coefficients without network access or directory writes.
+
+    Called once on import. Call again after ``update_igrf()`` to load newly
+    downloaded coefficients, or select an older generation with ``version``.
 
     :param version: The version of IGRF coefficients to load, e.g., '13'. If None, the latest version will be loaded.
     """
 
     global igrf, nmn,mns, nyear,years,yruts
 
-    print('Load IGRF coefficients ...')
-
     # Load all available IGRF coefficients.
     local_dir = os.path.join(os.path.dirname(__file__), 'igrf_coeffs')
-    if not os.path.exists(local_dir): os.mkdir(local_dir)
-    update_igrf(local_dir)
 
     if version is None:
         # Load the latest version.

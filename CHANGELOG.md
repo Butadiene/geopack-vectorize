@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2026-10-28
+
+### Fixed
+- Include every `geopack` subpackage in wheels and source distributions, including
+  `geopack.vectorized.models`, so a normal pip installation can be imported.
+- Load bundled IGRF coefficients on import without network access or writes to
+  the installation directory. Updates remain available through `update_igrf()`,
+  using HTTPS and a bounded request timeout.
+- Restore `t89_vectorized`, `t96_vectorized`, `t01_vectorized`, and `t04_vectorized`
+  imports from `geopack.vectorized`, including the quick-start import on PyPI.
+- Restore upstream scalar model imports (`from geopack.t89 import t89`, and the
+  corresponding T96, T01, and T04 paths) used by consumers such as pySPEDAS.
+
 ## [2.0.0] - 2026-02-11
 
 ### Breaking

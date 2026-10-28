@@ -17,6 +17,12 @@ from . import (
 # Re-export external field model functions (vectorized)
 from .models import t89, t96, t01, t04
 
+# Compatibility with the quick-start example published on PyPI for v2.0.0.
+t89_vectorized = t89
+t96_vectorized = t96
+t01_vectorized = t01
+t04_vectorized = t04
+
 # Re-export vectorized IGRF functions
 from .igrf import (
     igrf_geo,
@@ -66,6 +72,10 @@ __all__ = [
     "t96",
     "t01",
     "t04",
+    "t89_vectorized",
+    "t96_vectorized",
+    "t01_vectorized",
+    "t04_vectorized",
 
     # vectorized IGRF
     "igrf_geo",
