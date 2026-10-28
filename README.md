@@ -16,6 +16,12 @@ geopack-vectorize extends the original geopack by adding vectorized implementati
 - **Full Backward Compatibility**: All original geopack functions remain unchanged and available
 - **Comprehensive Validation**: Extensive test suite ensuring < 10⁻¹¹ relative error vs original implementations
 
+## Publication and Citation
+
+geopack-vectorize, including its Mageometry component for local-frame analysis of magnetic field geometry, is described in the following paper published in *Earth, Planets and Space*. If you use this work in your research, please cite:
+
+> Isono, K., Yoshikawa, A. & Katoh, Y. (2026). A local-frame approach to three-dimensional analysis of magnetospheric magnetic fields. *Earth, Planets and Space*, **78**, Article 201. [doi:10.1186/s40623-026-02528-2](https://doi.org/10.1186/s40623-026-02528-2).
+
 ## Upgrading to v2.0.0
 
 As of v2.0.0, the PyPI package name has changed from `geopack-vectorized` to `geopack-vectorize`. The old `geopack-vectorized` package will remain available for a transitional period but will eventually be removed. Please update your installation:
