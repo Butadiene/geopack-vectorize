@@ -35,10 +35,7 @@ jobs:
 
       - name: Check scalar and vectorized calculations
         run: >-
-          python -m pytest -q
-          tests/test_vectorized_models.py
-          tests/test_trace_vectorized.py
-          tests/test_trace_vectorized_with_vectorized_models.py
+          python -m pytest -q tests/ --ignore=tests/test_distribution.py
 
       # These tests build wheels and sdists, install them outside the checkout,
       # and run Python in isolated mode so source files cannot mask omissions.

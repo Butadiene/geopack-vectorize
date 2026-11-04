@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+- Preserve the T01 IMF clock angle for negative By instead of replacing it
+  with 2*pi, correcting both scalar and vectorized magnetic fields.
+- Accept integer coordinates without truncation in vectorized T01/T96,
+  and preserve NumPy broadcasting and multidimensional inputs in T01.
+- Broadcast all coordinate/vector components before transforms and determine
+  scalar outputs from every input, including spherical transforms and the
+  IGRF GSM/GSW wrappers.
+
 ## [2.0.1] - 2026-10-28
 
 ### Fixed
