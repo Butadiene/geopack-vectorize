@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.2] - 2026-11-04
+
 ### Fixed
 - Preserve the T01 IMF clock angle for negative By instead of replacing it
   with 2*pi, correcting both scalar and vectorized magnetic fields.
