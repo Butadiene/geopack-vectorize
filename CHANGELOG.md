@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.3] - 2026-11-07
+
 ### Fixed
 - Return NaN fields for NaN coordinates in vectorized T01/T96 instead of
   leaving zero outputs when no magnetopause region matches. Valid points
