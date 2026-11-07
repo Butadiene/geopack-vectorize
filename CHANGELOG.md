@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Return NaN fields for NaN coordinates in vectorized T01/T96 instead of
+  leaving zero outputs when no magnetopause region matches. Valid points
+  in the same batch retain their scalar-reference values.
+- Normalize Cartesian-to-spherical longitude in vectorized `sphcar` to
+  match the scalar convention of [0, 2*pi), retaining phi=0 at the poles.
+
 ## [2.0.2] - 2026-11-04
 
 ### Fixed
