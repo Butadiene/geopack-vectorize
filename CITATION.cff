@@ -1,6 +1,34 @@
-cff-version: 1.0.12
-message: "Cite this software using the DOI below."
+cff-version: 1.2.0
+message: "If you use geopack-vectorize, please cite the article in preferred-citation. The original geopack implementation is credited in references."
+title: geopack-vectorize
+type: software
+repository-code: "https://github.com/Butadiene/geopack-vectorize"
 authors:
-  - name: Sheng Tian
-    affiliation: Department of Atmospheric and Oceanic Sciences, University of California, Los Angeles, California, United States
-doi: 10.5281/zenodo.15110786
+  - family-names: Isono
+    given-names: Ko
+  - family-names: Tian
+    given-names: Sheng
+preferred-citation:
+  type: article
+  title: "A local-frame approach to three-dimensional analysis of magnetospheric magnetic fields"
+  authors:
+    - family-names: Isono
+      given-names: Ko
+    - family-names: Yoshikawa
+      given-names: Akimasa
+    - family-names: Katoh
+      given-names: Yuto
+  journal: "Earth, Planets and Space"
+  volume: 78
+  start: 201 # Article number
+  year: 2026
+  doi: 10.1186/s40623-026-02528-2
+references:
+  - type: software
+    title: geopack
+    authors:
+      - family-names: Tian
+        given-names: Sheng
+        affiliation: Department of Atmospheric and Oceanic Sciences, University of California, Los Angeles, California, United States
+    doi: 10.5281/zenodo.15110786
+    repository-code: "https://github.com/tsssss/geopack"

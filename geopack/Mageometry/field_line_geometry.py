@@ -47,9 +47,9 @@ def field_line_tangent(model_func, parmod, ps, x, y, z):
     mask_nonzero = b_mag > 1e-10
     
     # Initialize output
-    tx = np.zeros_like(x)
-    ty = np.zeros_like(y)
-    tz = np.zeros_like(z)
+    tx = np.zeros_like(x, dtype=float)
+    ty = np.zeros_like(y, dtype=float)
+    tz = np.zeros_like(z, dtype=float)
     
     # Normalize where field is non-zero
     tx[mask_nonzero] = bx[mask_nonzero] / b_mag[mask_nonzero]
@@ -199,9 +199,9 @@ def field_line_normal(model_func, parmod, ps, x, y, z, delta=0.01):
     mask_valid = mask_curved & mask_orthogonal    
     
     # Initialize output
-    nx = np.zeros_like(x)
-    ny = np.zeros_like(y)
-    nz = np.zeros_like(z)
+    nx = np.zeros_like(x, dtype=float)
+    ny = np.zeros_like(y, dtype=float)
+    nz = np.zeros_like(z, dtype=float)
     
     # Normalize where curvature exists
     nx[mask_valid] = dtx_ds[mask_valid] / dt_mag[mask_valid]

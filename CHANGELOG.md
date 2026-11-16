@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.4] - 2026-11-16
+
+### Fixed
+- Preserve fractional tangent and normal components in Mageometry when position
+  coordinates are integers or mix integer and floating-point types. This also
+  corrects the dependent curvature, torsion, and directional derivative results.
+- Set the EPS paper as the preferred citation in `CITATION.cff`, with the
+  original geopack author and DOI retained in the references. Validate the
+  metadata against CFF 1.2.0.
+
 ## [2.0.3] - 2026-11-07
 
 ### Fixed
